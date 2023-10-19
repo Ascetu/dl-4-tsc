@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04dbebc4-4f95-4cf3-bef6-ccfb16055e07" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dl-4-tsc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dl-4-tsc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/encoder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classifiers/fcn.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/fcn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/mcdcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/mcdcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/mcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/mcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/mlp.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/mlp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/resnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/tlenet.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/tlenet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers/twiesn.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers/twiesn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,23 +21,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1WChF2afEdVI6YmTBgUh9hKlgPx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../advTimeSeries" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunManager" selected="Python.main_run">
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/yungen/xd/projects/mine/dl-4-tsc",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager" selected="Python.generate_results_csv">
     <configuration name="generate_results_csv" type="PythonConfigurationType" factoryName="Python">
       <module name="dl-4-tsc" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,7 +56,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model.py" />
       <option name="PARAMETERS" value="generate_results_csv" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -81,7 +78,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model.py" />
       <option name="PARAMETERS" value="UCR_TS_Archive_2015 Coffee fcn _itr_8" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -107,6 +104,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -122,25 +120,34 @@
       <workItem from="1579077776175" duration="1964000" />
       <workItem from="1579179459209" duration="4724000" />
       <workItem from="1579522466245" duration="26000" />
+      <workItem from="1697706564048" duration="1606000" />
+      <workItem from="1697708184151" duration="3777000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="623" y="208" width="730" height="816" key="FileChooserDialogImpl" timestamp="1578659867915">
-      <screen x="67" y="34" width="1853" height="1166" />
-    </state>
-    <state x="623" y="208" width="730" height="816" key="FileChooserDialogImpl/67.34.1853.1166/1920.0.1920.1200@67.34.1853.1166" timestamp="1578659867915" />
-    <state x="113" y="34" width="1751" height="1166" key="SettingsEditor" timestamp="1578668425147">
-      <screen x="67" y="34" width="1853" height="1166" />
-    </state>
-    <state x="113" y="34" width="1751" height="1166" key="SettingsEditor/67.34.1853.1166/1920.0.1920.1200@67.34.1853.1166" timestamp="1578668425147" />
-    <state x="387" y="32" width="1208" height="1976" key="search.everywhere.popup" timestamp="1578664559654">
-      <screen x="67" y="34" width="1853" height="1166" />
-    </state>
-    <state x="387" y="32" width="1208" height="1976" key="search.everywhere.popup/67.34.1853.1166/1920.0.1920.1200@67.34.1853.1166" timestamp="1578664559654" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bc_pred.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>
