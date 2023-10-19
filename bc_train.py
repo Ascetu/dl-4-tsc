@@ -3,6 +3,7 @@ from tslearn.utils import save_time_series_txt, load_time_series_txt
 import numpy as np
 from tslearn.utils import to_sklearn_dataset
 import model
+import sys
 
 # 读取数据，tslearn格式(暂时如此，后面优化为直接读取sklearn格式数据)
 # x_train
