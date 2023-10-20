@@ -4,6 +4,7 @@ import numpy as np
 from tslearn.utils import to_sklearn_dataset
 import model
 import sys
+import os
 
 # 读取数据，tslearn格式(暂时如此，后面优化为直接读取sklearn格式数据)
 # x_train
@@ -54,6 +55,8 @@ if len(x_train.shape) == 2:  # if univariate：如果是单变量的
     classifier_name = "fcn"
     classifier_name = sys.argv[1]
     output_directory = "results/" + classifier_name + "/"
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
     # classifier = Classifier_FCN("fcn", input_shape, nb_classes, "fcn")
     classifier = model.create_classifier(classifier_name, input_shape, nb_classes, output_directory)
     # 训练
