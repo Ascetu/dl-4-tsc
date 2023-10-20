@@ -27,7 +27,7 @@ y_train = to_sklearn_dataset(Y_train[:5000])
 x_test = to_sklearn_dataset(X_prd[:5000])
 y_test = to_sklearn_dataset(Y_prd[:5000])
 
-print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
+print("转换后sklearn格式数据，形状：", x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
 nb_classes = len(np.unique(np.concatenate((y_train, y_test), axis=0)))
 
