@@ -86,7 +86,7 @@ class Classifier_MCDCNN:
             print('error')
             exit()
         mini_batch_size = 16
-        nb_epochs = 120
+        nb_epochs = 400
 
         x_train, x_val, y_train, y_val = \
             train_test_split(x, y, test_size=0.33)
