@@ -154,7 +154,7 @@ class Classifier_RESNET:
 
         return df_metrics
 
-    def predict(self, x_test, y_true, x_train, y_train, y_test, return_df_metrics=True):
+    def predict(self, x_test, y_true,return_df_metrics = True):
         start_time = time.time()
         model_path = self.output_directory + 'best_model.hdf5'
         model = keras.models.load_model(model_path)
