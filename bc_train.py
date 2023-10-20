@@ -63,4 +63,5 @@ if len(x_train.shape) == 2:  # if univariate：如果是单变量的
     classifier.fit(x_train, y_train, x_test, y_test, y_true)
 
     # 评估
-    classifier.predict(x_test, y_true)
+    res = classifier.predict(x_test, y_true)
+    print(res)

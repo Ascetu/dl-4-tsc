@@ -129,7 +129,7 @@ def save_logs(output_directory, hist, y_pred, y_true, duration, lr=True, y_true_
     index_best_model = hist_df['loss'].idxmin()
     row_best_model = hist_df.loc[index_best_model]
 
-    df_best_model = pd.DataFrame(data=np.zeros((1, 6), dtype=np.float), index=[0],
+    df_best_model = pd.DataFrame(data=np.zeros((1, 6), dtype=np.float64), index=[0],
                                  columns=['best_model_train_loss', 'best_model_val_loss', 'best_model_train_acc',
                                           'best_model_val_acc', 'best_model_learning_rate', 'best_model_nb_epoch'])
 

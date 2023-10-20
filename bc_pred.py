@@ -60,6 +60,7 @@ classifier_name = sys.argv[1]
 output_directory = "./results/" + classifier_name + "/"
 
 # 预测测试数据，并计算准确率
-predict(x_test, y_true)
+res = predict(x_test, y_true)
+print(res)
 
 
