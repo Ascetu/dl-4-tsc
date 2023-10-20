@@ -53,7 +53,7 @@ if len(x_train.shape) == 2:  # if univariate：如果是单变量的
     # 构建算法模型（后续根据指令选择不同算法）
     classifier_name = "fcn"
     classifier_name = sys.argv[1]
-    output_directory = "./results/" + classifier_name + "/"
+    output_directory = "results/" + classifier_name + "/"
     # classifier = Classifier_FCN("fcn", input_shape, nb_classes, "fcn")
     classifier = model.create_classifier(classifier_name, input_shape, nb_classes, output_directory)
     # 训练
