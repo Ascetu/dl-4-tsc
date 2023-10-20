@@ -139,8 +139,7 @@ class Classifier_RESNET:
 
         self.model.save(self.output_directory + 'last_model.hdf5')
 
-        y_pred = self.predict(x_val, y_true, x_train, y_train, y_val,
-                              return_df_metrics=False)
+        y_pred = self.predict(x_val, y_true)
 
         # save predictions
         np.save(self.output_directory + 'y_pred.npy', y_pred)
