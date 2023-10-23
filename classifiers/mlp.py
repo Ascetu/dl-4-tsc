@@ -13,87 +13,90 @@ from utils.utils import calculate_metrics
 
 class Classifier_MLP:
 
-	def __init__(self, output_directory, input_shape, nb_classes, verbose=False,build=True):
-		self.output_directory = output_directory
-		if build == True:
-			self.model = self.build_model(input_shape, nb_classes)
-			if(verbose==True):
-				self.model.summary()
-			self.verbose = verbose
-			self.model.save_weights(self.output_directory + 'model_init.hdf5')
-		return
+    def __init__(self, output_directory, input_shape, nb_classes, verbose=False,build=True):
+        self.output_directory = output_directory
+        if build == True:
+            self.model = self.build_model(input_shape, nb_classes)
+            if(verbose==True):
+                self.model.summary()
+            self.verbose = verbose
+            self.model.save_weights(self.output_directory + 'model_init.hdf5')
+        return
 
-	def build_model(self, input_shape, nb_classes):
-		input_layer = keras.layers.Input(input_shape)
+    def build_model(self, input_shape, nb_classes):
+        input_layer = keras.layers.Input(input_shape)
 
-		# flatten/reshape because when multivariate all should be on the same axis 
-		input_layer_flattened = keras.layers.Flatten()(input_layer)
-		
-		layer_1 = keras.layers.Dropout(0.1)(input_layer_flattened)
-		layer_1 = keras.layers.Dense(500, activation='relu')(layer_1)
+        # flatten/reshape because when multivariate all should be on the same axis
+        input_layer_flattened = keras.layers.Flatten()(input_layer)
 
-		layer_2 = keras.layers.Dropout(0.2)(layer_1)
-		layer_2 = keras.layers.Dense(500, activation='relu')(layer_2)
+        layer_1 = keras.layers.Dropout(0.1)(input_layer_flattened)
+        layer_1 = keras.layers.Dense(500, activation='relu')(layer_1)
+        layer_1 = keras.layers.BatchNormalization()(layer_1)
 
-		layer_3 = keras.layers.Dropout(0.2)(layer_2)
-		layer_3 = keras.layers.Dense(500, activation='relu')(layer_3)
+        layer_2 = keras.layers.Dropout(0.2)(layer_1)
+        layer_2 = keras.layers.Dense(500, activation='relu')(layer_2)
+        layer_2 = keras.layers.BatchNormalization()(layer_2)
 
-		output_layer = keras.layers.Dropout(0.3)(layer_3)
-		output_layer = keras.layers.Dense(nb_classes, activation='softmax')(output_layer)
+        layer_3 = keras.layers.Dropout(0.2)(layer_2)
+        layer_3 = keras.layers.Dense(500, activation='relu')(layer_3)
+        layer_3 = keras.layers.BatchNormalization()(layer_3)
 
-		model = keras.models.Model(inputs=input_layer, outputs=output_layer)
+        output_layer = keras.layers.Dropout(0.3)(layer_3)
+        output_layer = keras.layers.Dense(nb_classes, activation='softmax')(output_layer)
 
-		model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.Adadelta(),
-			metrics=['accuracy'])
+        model = keras.models.Model(inputs=input_layer, outputs=output_layer)
 
-		reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5, patience=200, min_lr=1)
+        model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.Adadelta(),
+            metrics=['accuracy'])
 
-		file_path = self.output_directory+'best_model.hdf5' 
+        reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5, patience=200, min_lr=0.5)
 
-		model_checkpoint = keras.callbacks.ModelCheckpoint(filepath=file_path, monitor='loss', 
-			save_best_only=True)
+        file_path = self.output_directory+'best_model.hdf5'
 
-		self.callbacks = [reduce_lr,model_checkpoint]
+        model_checkpoint = keras.callbacks.ModelCheckpoint(filepath=file_path, monitor='loss',
+            save_best_only=True)
 
-		return model
+        self.callbacks = [reduce_lr,model_checkpoint]
 
-	def fit(self, x_train, y_train, x_val, y_val,y_true):
-		if not tf.test.is_gpu_available:
-			print('error')
-			exit()
-		# x_val and y_val are only used to monitor the test loss and NOT for training  
-		batch_size = 16
-		nb_epochs = 400
+        return model
 
-		mini_batch_size = int(min(x_train.shape[0]/10, batch_size))
+    def fit(self, x_train, y_train, x_val, y_val,y_true):
+        if not tf.test.is_gpu_available:
+            print('error')
+            exit()
+        # x_val and y_val are only used to monitor the test loss and NOT for training
+        batch_size = 16
+        nb_epochs = 400
 
-		start_time = time.time() 
+        mini_batch_size = int(min(x_train.shape[0]/10, batch_size))
 
-		hist = self.model.fit(x_train, y_train, batch_size=mini_batch_size, epochs=nb_epochs,
-			verbose=self.verbose, validation_data=(x_val,y_val), callbacks=self.callbacks)
-		
-		duration = time.time() - start_time
+        start_time = time.time()
 
-		self.model.save(self.output_directory + 'last_model.hdf5')
+        hist = self.model.fit(x_train, y_train, batch_size=mini_batch_size, epochs=nb_epochs,
+            verbose=self.verbose, validation_data=(x_val,y_val), callbacks=self.callbacks)
 
-		model = keras.models.load_model(self.output_directory+'best_model.hdf5')
+        duration = time.time() - start_time
 
-		y_pred = model.predict(x_val)
+        self.model.save(self.output_directory + 'last_model.hdf5')
 
-		# convert the predicted from binary to integer 
-		y_pred = np.argmax(y_pred , axis=1)
+        model = keras.models.load_model(self.output_directory+'best_model.hdf5')
 
-		save_logs(self.output_directory, hist, y_pred, y_true, duration)
+        y_pred = model.predict(x_val)
 
-		keras.backend.clear_session()
+        # convert the predicted from binary to integer
+        y_pred = np.argmax(y_pred , axis=1)
 
-	def predict(self, x_test, y_true,return_df_metrics = True):
-		model_path = self.output_directory + 'best_model.hdf5'
-		model = keras.models.load_model(model_path)
-		y_pred = model.predict(x_test)
-		if return_df_metrics:
-			y_pred = np.argmax(y_pred, axis=1)
-			df_metrics = calculate_metrics(y_true, y_pred, 0.0)
-			return df_metrics
-		else:
-			return y_pred
+        save_logs(self.output_directory, hist, y_pred, y_true, duration)
+
+        keras.backend.clear_session()
+
+    def predict(self, x_test, y_true,return_df_metrics = True):
+        model_path = self.output_directory + 'best_model.hdf5'
+        model = keras.models.load_model(model_path)
+        y_pred = model.predict(x_test)
+        if return_df_metrics:
+            y_pred = np.argmax(y_pred, axis=1)
+            df_metrics = calculate_metrics(y_true, y_pred, 0.0)
+            return df_metrics
+        else:
+            return y_pred
