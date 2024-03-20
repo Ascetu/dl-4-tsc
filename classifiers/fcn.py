@@ -44,7 +44,7 @@ class Classifier_FCN:
 		model.compile(loss='categorical_crossentropy', optimizer = tf.keras.optimizers.Adam(),
 			metrics=['accuracy'])
 
-		reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5, patience=50,
+		reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5, patience=5,
 			min_lr=0.0001)
 
 		file_path = self.output_directory+'best_model.hdf5'
