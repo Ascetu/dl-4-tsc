@@ -14,9 +14,9 @@ data = np.loadtxt('BC_Y.txt')
 Y_train = data.flatten()
 
 # x_test
-X_prd = load_time_series_txt("BC_X_PRD.txt")
+X_prd = load_time_series_txt("BC_VAL_X.txt")
 # y_test
-data2 = np.loadtxt('BC_Y_PRD.txt')
+data2 = np.loadtxt('BC_VAL_Y.txt')
 Y_prd = data2.flatten()
 
 print("转换前tslearn格式数据，形状：", X_train.shape, Y_train.shape, X_prd.shape, Y_prd.shape)
