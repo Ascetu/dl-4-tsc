@@ -22,14 +22,15 @@ Y_prd = data2.flatten()
 print("转换前tslearn格式数据，形状：", X_train.shape, Y_train.shape, X_prd.shape, Y_prd.shape)
 
 # 转换为sklearn格式数据
-x_train = to_sklearn_dataset(X_train[:5000])
-y_train = to_sklearn_dataset(Y_train[:5000])
+x_train = to_sklearn_dataset(X_train[:400])
+y_train = to_sklearn_dataset(Y_train[:400])
 x_test = to_sklearn_dataset(X_prd[:5000])
 y_test = to_sklearn_dataset(Y_prd[:5000])
 
 print("转换后sklearn格式数据，形状：", x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
-nb_classes = len(np.unique(np.concatenate((y_train, y_test), axis=0)))
+# nb_classes = len(np.unique(np.concatenate((y_train, y_test), axis=0)))
+nb_classes = len(np.unique(y_train))
 
 # train、test标签转换为one-hot向量
 enc = sklearn.preprocessing.OneHotEncoder(categories='auto')
