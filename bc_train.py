@@ -34,9 +34,12 @@ nb_classes = len(np.unique(y_train))
 
 # train、test标签转换为one-hot向量
 enc = sklearn.preprocessing.OneHotEncoder(categories='auto')
-enc.fit(np.concatenate((y_train, y_test), axis=0).reshape(-1, 1))
+enc.fit(y_train).reshape(-1, 1))
 y_train = enc.transform(y_train.reshape(-1, 1)).toarray()
-y_test = enc.transform(y_test.reshape(-1, 1)).toarray()
+
+enc2 = sklearn.preprocessing.OneHotEncoder(categories='auto')
+enc2.fit(y_test).reshape(-1, 1))
+y_test = enc2.transform(y_test.reshape(-1, 1)).toarray()
 
 # test标签转回去(直接用原始的y_test会报错，后续探究原因)
 y_true = np.argmax(y_test, axis=1)
