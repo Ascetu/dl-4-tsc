@@ -24,8 +24,8 @@ print("转换前tslearn格式数据，形状：", X_train.shape, Y_train.shape, 
 # 转换为sklearn格式数据
 x_train = to_sklearn_dataset(X_train[:400])
 y_train = to_sklearn_dataset(Y_train[:400])
-x_test = to_sklearn_dataset(X_prd[:5000])
-y_test = to_sklearn_dataset(Y_prd[:5000])
+x_test = to_sklearn_dataset(X_prd)
+y_test = to_sklearn_dataset(Y_prd)
 
 print("转换后sklearn格式数据，形状：", x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
